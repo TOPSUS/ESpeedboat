@@ -15,8 +15,12 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+    protected $guarded = [];
+    protected $table = 'tb_user';
+
     protected $fillable = [
-        'name', 'email', 'password',
+        'nik','nama','alamat','jeniskelamin','nohp','email','role'
     ];
 
     /**
@@ -25,7 +29,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token'
     ];
 
     /**
@@ -36,4 +40,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function spboat(){
+        return $this->hasMany('App\Speedboat');
+    }
 }
