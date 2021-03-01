@@ -32,7 +32,7 @@
                       <td>{{$speedboat->nama_speedboat}}</td>
                       <td>{{$speedboat->kapasitas}}</td>
                       <td>{{$speedboat->deskripsi}}</td>
-                      <td><a style="margin-right:7px" class="btn btn-info btn-sm" ><i class="fas fa-pencil-alt"></i></a><a class="btn btn-danger btn-sm" href="/admin/delete" onclick="return confirm('Apakah Anda Yakin ?')"><i class="fas fa-trash"></i></a></td>
+                      <td><a style="margin-right:7px" class="btn btn-info btn-sm" href="/admin/speedboatmaster/Edit/{{$speedboat->id}}"><i class="fas fa-pencil-alt"></i></a><a class="btn btn-danger btn-sm" href="/admin/speedboatmaster/Delete/{{$speedboat->id}}" onclick="return confirm('Apakah Anda Yakin ?')"><i class="fas fa-trash"></i></a></td>
                     </tr>
                   @endforeach
                   </tbody>

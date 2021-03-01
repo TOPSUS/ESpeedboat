@@ -15,11 +15,19 @@
             <div class="row card-header">
                 <div class="col">
                     <label for="id_jadwal" class="font-weight-bold text-dark">Jadwal</label>
-                    <input type="text" class="form-control" id="id_jadwal" placeholder="Masukan Jadwal" name="id_jadwal">
+                    <select name="id_jadwal" class="custom-select" required>
+                    @foreach($Jadwal as $jd)
+                        <option value="{{$jd->id}}">{{$jd->asal}} -> {{$jd->tujuan}} ({{$jd->waktu_berangkat}} - {{$jd->waktu_sampai}})</option>
+                    @endforeach
+                     </select>
                 </div>
                 <div class="col">
-                    <label for="id_speedboat" class="font-weight-bold text-dark">Speed Boat</label>
-                    <input type="text" class="form-control" id="id_speedboat" placeholder="Masukan Speedboat" name="id_speedboat">
+                    <label for="id_speedboat" class="font-weight-bold text-dark">Nama Speed Boat Speed Boat</label>
+                    <select name="id_speedboat" class="custom-select" required>
+                    @foreach($Speedboat as $sb)
+                        <option value="{{$sb->id}}">{{$sb->nama_speedboat}}</option>
+                    @endforeach
+                     </select>
                 </div>
             </div>
             <div class="row card-header">
@@ -35,22 +43,17 @@
 
             <div class="form-group card-header ">
                 <label for="id_user" class="font-weight-bold text-dark">Pembeli</label>
-                <input type="text" class="form-control" id="id_user"  placeholder="Masukan Nama Pembeli" name="id_user">
+                <select name="id_user" class="custom-select" required>
+                    @foreach($User as $us)
+                        <option value="{{$us->id}}">{{$us->nama}}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="form-group card-header ">
                 <label for="bukti" class="font-weight-bold text-dark">Bukti</label>
                 <input type="file" class="form-control" id="bukti"  placeholder="Masukan Nama Pembeli" name="bukti">
             </div>
-
-            <div class="form-group card-header">
-                <label for="InputName" class="font-weight-bold text-dark">Status</label>
-                    <br><input type="radio" name="status" value="Pending"> Pending &nbsp &nbsp
-                    <input type="radio" name="status" value="Terkonfirmasi"> Terkonfirmasi &nbsp &nbsp
-                    <input type="radio" name="status" value="Batal"> Batal &nbsp &nbsp
-                    <input type="radio" name="status" value="Selesai"> Selesai
-            </div>
-
             <div class="form-group card-header">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>

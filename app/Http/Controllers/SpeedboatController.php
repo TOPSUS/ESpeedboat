@@ -58,4 +58,28 @@ public function index()
         ]);
         return redirect('/admin/speedboatmaster');
     }
+
+    public function editSpeedboat($id){
+        $dataUpdate=\App\Speedboat::find($id);
+            return view('admin.formEditSpeedboat', compact('dataUpdate'));
+    }
+
+    public function updateSpeedboat(Request $request){
+        $dataPost=\App\Speedboat::find($request->id);
+
+        $dataPost->nama_speedboat=$request->nama_speedboat;
+        $dataPost->kapasitas=$request->kapasitas;
+        $dataPost->deskripsi=$request->deskripsi;
+
+        $dataPost->save();
+
+        return redirect('/admin/speedboatmaster');
+    }
+
+    public function deleteSpeedboat($id){
+        $deleteSpeedboat=\App\Speedboat::find($id);
+        $deleteSpeedboat->delete();
+
+        return redirect('/admin/speedboatmaster');
+    }
 }

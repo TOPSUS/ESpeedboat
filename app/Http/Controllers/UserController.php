@@ -103,7 +103,7 @@ class UserController extends Controller
     {
         //
     }
-public function homeuser()
+    public function homeuser()
 	{
 
     $dataUser = \App\User::all();
@@ -130,4 +130,32 @@ public function homeuser()
 		]);
 		return redirect('/admin/usermaster');
 	}
+
+    public function editUser($id){
+        $dataUpdate=\App\User::find($id);
+            return view('admin.formEditUser', compact('dataUpdate'));
+    }
+
+    public function updateUser(Request $request){
+        $dataPost=\App\User::find($request->id);
+
+        $dataPost->nik=$request->nik;
+        $dataPost->nama=$request->nama;
+        $dataPost->alamat=$request->alamat;
+        $dataPost->jeniskelamin=$request->jeniskelamin;
+        $dataPost->nohp=$request->nohp;
+        $dataPost->email=$request->email;
+        $dataPost->role=$request->role;
+
+        $dataPost->save();
+
+        return redirect('/admin/usermaster');
+    }
+
+    public function deleteUser($id){
+        $deleteUser=\App\User::find($id);
+        $deleteUser->delete();
+
+        return redirect('/admin/usermaster');
+    }
 }

@@ -20,8 +20,9 @@
                   <thead>
                     <tr>
                       <th>Kode Tiket</th>
-                      <th>Id Jadwal</th>
-                      <th>Id Speed Boat</th>
+                      <th>Jadwal Berangkat</th>
+                      <th>Jadwal Sampai</th>
+                      <th>Nama Speed Boat</th>
                       <th>Harga</th>
                       <th>Total</th>
                       <th>Id User</th>
@@ -35,14 +36,15 @@
                     @foreach($dataPembeli as $pembeli)
                     <tr>
                       <td>{{$pembeli->kode_tiket}}</td>
-                      <td>{{$pembeli->jadwal->waktu_berangkat}} - {{$pembeli->jadwal->waktu_sampai}}</td>
+                      <td>{{$pembeli->jadwal->waktu_berangkat}}</td>
+                      <td>{{$pembeli->jadwal->waktu_sampai}}</td>
                       <td>{{$pembeli->Speedboat->nama_speedboat}}</td>
                       <td>{{$pembeli->harga}}</td>
                       <td>{{$pembeli->total}}</td>
                       <td>{{$pembeli->user->nama}}</td>
                       <td>{{$pembeli->status}}</td>
                       <td>{{$pembeli->bukti}}</td>                      
-                      <td><a style="margin-right:7px" class="btn btn-info btn-sm" ><i class="fas fa-pencil-alt"></i></a><a class="btn btn-danger btn-sm" href="/admin/delete" onclick="return confirm('Apakah Anda Yakin ?')"><i class="fas fa-trash"></i></a></td>
+                      <td><a style="margin-right:7px" class="btn btn-info btn-sm" href="/admin/pembelimaster/Edit/{{$pembeli->id}}"><i class="fas fa-pencil-alt"></i></a><a class="btn btn-danger btn-sm" href="/admin/pembelimaster/Delete/{{$pembeli->id}}" onclick="return confirm('Apakah Anda Yakin ?')"><i class="fas fa-trash"></i></a></td>
                     </tr>
                   
                     @endforeach

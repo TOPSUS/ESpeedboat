@@ -45,7 +45,8 @@ class JadwalController extends Controller
 
 	public function createJadwal()
 	{
-		return view('admin.formJadwal');
+        $speedboat=\App\Speedboat::all();
+		return view('admin.formJadwal', compact('speedboat'));
 	}
 
     public function addJadwal(Request $request)
@@ -57,6 +58,33 @@ class JadwalController extends Controller
             'waktu_sampai'=>$request->waktu_sampai,
             'id_speedboat'=>$request->id_speedboat,
         ]);
+        return redirect('/admin/jadwalmaster');
+    }
+
+    public function editJadwal($id){
+        $speedboat=\App\Speedboat::all();
+        $dataUpdate=\App\Jadwal::with('jadwaltospeedboat')->find($id);
+            return view('admin.formEditJadwal', compact('dataUpdate','speedboat'));
+    }
+
+    public function updateJadwal(Request $request){
+        $dataPost=\App\Jadwal::find($request->id);
+
+        $dataPost->asal=$request->asal;
+        $dataPost->waktu_berangkat=$request->waktu_berangkat;
+        $dataPost->tujuan=$request->tujuan;
+        $dataPost->waktu_sampai=$request->waktu_sampai;
+        $dataPost->id_speedboat=$request->id_speedboat;
+
+        $dataPost->save();
+
+        return redirect('/admin/jadwalmaster');
+    }
+
+    public function deleteJadwal($id){
+        $deleteJadwal=\App\Jadwal::find($id);
+        $deleteJadwal->delete();
+
         return redirect('/admin/jadwalmaster');
     }
 }

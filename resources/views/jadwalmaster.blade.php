@@ -36,7 +36,7 @@
                       <td>{{$jadwal->tujuan}}</td>
                       <td>{{$jadwal->waktu_sampai}}</td>
                       <td>{{$jadwal->Speedboat->nama_speedboat}}</td>
-                      <td><a style="margin-right:7px" class="btn btn-info btn-sm" ><i class="fas fa-pencil-alt"></i></a><a class="btn btn-danger btn-sm" href="/admin/delete" onclick="return confirm('Apakah Anda Yakin ?')"><i class="fas fa-trash"></i></a></td>
+                      <td><a style="margin-right:7px" class="btn btn-info btn-sm" href="/admin/jadwalmaster/Edit/{{$jadwal->id}}"><i class="fas fa-pencil-alt"></i></a><a class="btn btn-danger btn-sm" href="/admin/jadwalmaster/Delete/{{$jadwal->id}}" onclick="return confirm('Apakah Anda Yakin ?')"><i class="fas fa-trash"></i></a></td>
                     </tr>
                   
                    @endforeach

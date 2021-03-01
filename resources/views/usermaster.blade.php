@@ -40,7 +40,7 @@
                       <td>{{$user->nohp}}</td>
                       <td>{{$user->email}}</td>
                       <td>{{$user->role}}</td>
-                      <td><a style="margin-right:7px" class="btn btn-info btn-sm" ><i class="fas fa-pencil-alt"></i></a><a class="btn btn-danger btn-sm" href="#" onclick="return confirm('Apakah Anda Yakin ?')"><i class="fas fa-trash"></i></a></td>
+                      <td><a style="margin-right:7px" class="btn btn-info btn-sm" href="/admin/usermaster/Edit/{{$user->id}}"><i class="fas fa-pencil-alt"></i></a><a class="btn btn-danger btn-sm" href="/admin/usermaster/Delete/{{$user->id}}" onclick="return confirm('Apakah Anda Yakin ?')"><i class="fas fa-trash"></i></a></td>
                     </tr>
                   
                     @endforeach
