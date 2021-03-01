@@ -35,4 +35,28 @@ class JadwalController extends Controller
             ],401);
         }
     }
+	public function index()
+	{
+
+    $dataJadwal = \App\Jadwal::all();
+    return view('jadwalmaster',compact('dataJadwal'));
+	
+	}
+
+	public function createJadwal()
+	{
+		return view('admin.formJadwal');
+	}
+
+    public function addJadwal(Request $request)
+    {
+        \App\Jadwal::create([
+            'asal'=>$request->asal,
+            'waktu_berangkat'=>$request->waktu_berangkat,
+            'tujuan'=>$request->tujuan,
+            'waktu_sampai'=>$request->waktu_sampai,
+            'id_speedboat'=>$request->id_speedboat,
+        ]);
+        return redirect('/admin/jadwalmaster');
+    }
 }

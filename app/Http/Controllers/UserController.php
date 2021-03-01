@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -102,4 +103,31 @@ class UserController extends Controller
     {
         //
     }
+public function homeuser()
+	{
+
+    $dataUser = \App\User::all();
+    return view('usermaster',compact('dataUser'));
+	
+	}
+
+	public function createUser()
+	{
+		return view('admin.formUser');
+	}
+
+	public function addUser(Request $request)
+	{
+		\App\User::create([
+			'nik'=>$request->nik,
+			'nama'=>$request->nama,
+			'alamat'=>$request->alamat,
+			'jeniskelamin'=>$request->jeniskelamin,
+			'nohp'=>$request->nohp,
+			'email'=>$request->email,
+			'password'=>Hash::make($request->password),
+			'role'=>$request->role,
+		]);
+		return redirect('/admin/usermaster');
+	}
 }

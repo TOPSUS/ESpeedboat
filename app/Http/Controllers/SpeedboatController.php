@@ -36,4 +36,26 @@ class SpeedboatController extends Controller
             ],401);
         }
     }
+public function index()
+	{
+
+    $dataSpeedboat = \App\Speedboat::all();
+    return view('speedboatmaster',compact('dataSpeedboat'));
+	
+	}
+
+	public function createSpeedboat()
+	{
+		return view('admin.formSpeedBoat');
+	}
+
+    public function addSpeedboat(Request $request)
+    {
+        \App\Speedboat::create([
+            'nama_speedboat'=>$request->nama_speedboat,
+            'kapasitas'=>$request->kapasitas,
+            'deskripsi'=>$request->deskripsi,
+        ]);
+        return redirect('/admin/speedboatmaster');
+    }
 }

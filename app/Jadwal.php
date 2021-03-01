@@ -11,6 +11,6 @@ class Jadwal extends Model
 
     public function speedboat()
     {
-        return $this->belongsTo('App\Speedboat','id_speedboat');
+        return $this->belongsTo('App\Speedboat','id_speedboat','id');
     }
 }
